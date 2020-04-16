@@ -1,0 +1,24 @@
+{
+  "name": "yvan-ui-example",
+  "version": "0.0.1",
+  "private": true,
+  "typings": "types/index.d.ts",
+  "scripts": {
+    "serve": "live-server ./public --port=9090 --proxy=/yvanui:http://localhost:9529/yvanui --mount=/dist2:./node_modules/yvan-ui/dist && tsc -w"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.3.31",
+    "@types/lodash": "^4.14.149",
+    "@types/qs": "6.9.0",
+    "@types/moment": "^2.13.0"
+  },
+  "devDependencies": {
+    "es6-promise": "^4.0.5",
+    "typescript": "~3.8.3"
+  },
+  "browserslist": [
+    "last 5 versions",
+    "> 6%",
+    "not ie < 8"
+  ]
+}
