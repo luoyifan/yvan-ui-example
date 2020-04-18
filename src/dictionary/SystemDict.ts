@@ -1,6 +1,4 @@
 import View, { Refs } from "./SystemDict.view";
-import * as YvanUI from "yvan-ui";
-import _ = require("lodash");
 
 @YvanUI.BizModule()
 export default class Module extends View<Module, void> {
@@ -28,25 +26,6 @@ export default class Module extends View<Module, void> {
         status: 1,
       },
     ]);
-  }
-
-  func2() {
-    var window = YvanUI.webix
-      .ui({
-        view: "window",
-        id: "my_win",
-        head: "My Window",
-        position: "center",
-        move: true,
-        resize: true,
-        modal: true,
-        width: 200,
-        height: 200,
-        body: {
-          template: "Some text",
-        },
-      })
-      .show(webix.$$("12345"));
   }
 
   resetForm() {

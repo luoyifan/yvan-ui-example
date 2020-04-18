@@ -1,6 +1,4 @@
 import View, { Refs } from "./singleTreeGrid.view";
-import * as YvanUI from "yvan-ui";
-import _ = require("lodash");
 
 @YvanUI.BizModule()
 export default class Module extends View<Module, void> {

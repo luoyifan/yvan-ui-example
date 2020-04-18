@@ -1,8 +1,7 @@
-import * as YvanUI from "yvan-ui";
 import SingleGrid from "./singleGrid.data";
 
 export type Refs = {};
-export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
+export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
   $refs!: Refs;
 
   viewResolver() {
@@ -154,7 +153,7 @@ export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
               icon: "fa fa-pencil-square",
               width: 80,
               css: { "margin-right": "20px" },
-              click(this: any) {},
+              click(this: any) { },
             },
             {
               view: "button",

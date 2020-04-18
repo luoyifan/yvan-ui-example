@@ -1,4 +1,3 @@
-import * as YvanUI from "yvan-ui";
 import selectOrg from "./widgets/selectOrg";
 
 interface INP {

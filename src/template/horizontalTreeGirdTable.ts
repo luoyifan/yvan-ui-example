@@ -1,5 +1,4 @@
 import View, { Refs } from "./horizontalTreeGirdTable.view";
-import * as YvanUI from "yvan-ui";
 import SingleGridData from "./singleGrid.data";
 
 @YvanUI.BizModule()

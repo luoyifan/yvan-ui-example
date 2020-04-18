@@ -1,5 +1,4 @@
 import CustomData from "./custom.data";
-import * as YvanUI from "yvan-ui";
 import { BaseGridWidget } from "./BaseGridWidget";
 
 @YvanUI.BizModule()

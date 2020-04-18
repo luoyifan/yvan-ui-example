@@ -1,5 +1,3 @@
-import * as YvanUI from "yvan-ui";
-
 export interface Refs {
   treeTable: YvanUI.CtlTreeTable;
 }

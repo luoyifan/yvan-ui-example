@@ -1,9 +1,9 @@
-import * as YvanUI from "yvan-ui";
 import { BaseGridWidget } from "./BaseGridWidget";
 
 @YvanUI.BizModule()
 export default class Module extends BaseGridWidget<Module> {
   onLoad(): void {
+
     this.refs.grid.setData([
       {
         jo_id: 1,

@@ -1,12 +1,10 @@
-import * as YvanUI from "yvan-ui";
-
 export interface Refs {
   treeTable1: YvanUI.CtlTreeTable;
   grid1: YvanUI.CtlGrid;
   richselect1: YvanUI.CtlCombo;
   combo1: YvanUI.CtlCombo;
 }
-export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
+export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
   refs!: Refs;
   viewResolver() {
     return {
@@ -100,7 +98,7 @@ export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
                   icon: "fa fa-pencil-square-o",
                   width: 80,
                   css: { "margin-right": "20px" },
-                  click(this: any) {},
+                  click(this: any) { },
                 },
                 {
                   view: "button",

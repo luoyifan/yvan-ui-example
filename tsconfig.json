@@ -12,8 +12,8 @@
         "noImplicitAny": false,
         "allowSyntheticDefaultImports": true,
         "downlevelIteration": true,
-        // "sourceMap": true,
-        "inlineSourceMap": true,
+        "sourceMap": true,
+        // "inlineSourceMap": true,
         "baseUrl": ".",
         "paths": {
             "@/*": ["./*"]

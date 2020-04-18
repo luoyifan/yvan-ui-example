@@ -1,5 +1,3 @@
-import * as YvanUI from "yvan-ui";
-
 const events = {
   onRender: {
     type: "function",

@@ -1,4 +1,3 @@
-import * as YvanUI from "yvan-ui";
 import DialogC1 from "./DialogC1";
 
 interface Refs {}

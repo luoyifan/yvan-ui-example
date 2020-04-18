@@ -1,5 +1,3 @@
-import * as YvanUI from "yvan-ui";
-
 export type Refs = {};
 export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
   $refs!: Refs;

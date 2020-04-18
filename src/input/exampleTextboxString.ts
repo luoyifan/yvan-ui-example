@@ -1,5 +1,3 @@
-import * as YvanUI from "yvan-ui";
-
 interface Refs {
   text1: YvanUI.CtlText;
 }

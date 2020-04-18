@@ -1,4 +1,3 @@
-import * as YvanUI from "yvan-ui";
 const small_film_set = [
   {
     id: 1,

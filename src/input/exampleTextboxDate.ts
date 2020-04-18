@@ -1,18 +1,11 @@
-import * as YvanUI from "yvan-ui";
-
 export type Refs = {
   date1: YvanUI.CtlDatePicker;
   date2: YvanUI.CtlDateRangePicker;
   search1: YvanUI.CtlSearch;
 };
 @YvanUI.BizModule()
-export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
-  main: {
-    date1: string;
-    dateRange: string;
-    start1: string;
-    end1: string;
-  } = {
+export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
+  main = {
     date1: "1990-10-01",
     dateRange: "1990-10-01 至 2019-10-01",
     start1: "",
@@ -203,6 +196,6 @@ export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
   property: {
     value: string;
   } = {
-    value: "当前值",
-  };
+      value: "当前值",
+    };
 }

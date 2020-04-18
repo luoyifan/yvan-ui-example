@@ -1,5 +1,4 @@
 import View from "./ExampleComplexPurchanse.view";
-import * as YvanUI from "yvan-ui";
 import moment = require("moment");
 
 // 一个功能模块

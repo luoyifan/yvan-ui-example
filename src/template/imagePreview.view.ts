@@ -1,9 +1,7 @@
-import * as YvanUI from "yvan-ui";
-
 export interface Refs {
   treeTable: YvanUI.CtlTreeTable;
 }
-export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
+export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
   refs!: Refs;
 
   viewResolver() {

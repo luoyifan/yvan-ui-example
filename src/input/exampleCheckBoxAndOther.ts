@@ -1,5 +1,3 @@
-import * as YvanUI from "yvan-ui";
-
 export type Refs = {
   checkbox1: YvanUI.CtlCheckBox;
   switch1: YvanUI.CtlSwitch;

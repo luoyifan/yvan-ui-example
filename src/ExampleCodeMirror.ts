@@ -1,5 +1,4 @@
 import View from "./ExampleCodeMirror.view";
-import * as YvanUI from "yvan-ui";
 @YvanUI.BizModule()
 export default class Module extends View<Module, void> {
   onLoad(): void {

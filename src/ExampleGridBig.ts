@@ -1,5 +1,3 @@
-import * as YvanUI from "yvan-ui";
-
 export interface Refs {
   grid1: YvanUI.CtlGrid;
 }

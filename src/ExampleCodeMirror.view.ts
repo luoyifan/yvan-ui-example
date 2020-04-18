@@ -1,4 +1,3 @@
-import * as YvanUI from "yvan-ui";
 export interface Refs {
   cj: YvanUI.CtlCodeMirror;
   cx: YvanUI.CtlCodeMirror;

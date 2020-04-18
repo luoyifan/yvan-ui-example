@@ -1,5 +1,4 @@
 import View, { Refs } from "./imagePreview.view";
-import * as YvanUI from "yvan-ui";
 
 @YvanUI.BizModule()
 export default class Module extends View<Module, void> {

@@ -15,5 +15,8 @@ require.config({
 });
 
 $(document).ready(function () {
-    require(['app'])
+    const yvanui = require(['yvan-ui'], function (yvanui) {
+        window.YvanUI = yvanui;
+        require(['app'])
+    })
 });

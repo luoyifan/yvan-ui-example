@@ -26,7 +26,6 @@ import ExampleTextboxPerform from './ExampleTextboxPerform';
 import Upload from "./exampleUpload";
 import ExampleDialogSimple from './dialog/exampleDialogSimple';
 import ExampleWindow from "./ExampleWindow"
-import mdtPadGrid from "./template/mdtPadGrid"
 import ExampleComplexPurchanse from './ExampleComplexPurchanse'
 import ExampleTextboxComplex from './ExampleTextboxComplex'
 import ExampleTree from './ExampleTree'
@@ -146,11 +145,6 @@ export default [
         text: "IDE",
         icon: "fa fa-file-code-o",
         children: [{text: "CodeMirror", value: ExampleCodeMirror, key: "./ExampleCodeMirror"}]
-    },
-    {
-        text: "门店通",
-        icon: "fa fa-align-justify",
-        children: [{text: "账户药店管理", value: mdtPadGrid, key: "./template/mdtPadGrid"}]
     },
     {
         text: "图片上传",

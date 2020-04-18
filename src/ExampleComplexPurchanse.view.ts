@@ -1,4 +1,3 @@
-import * as YvanUI from "yvan-ui";
 import selectCustom from "./widgets/selectCustom";
 
 export interface Refs {

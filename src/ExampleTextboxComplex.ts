@@ -1,5 +1,3 @@
-import * as YvanUI from "yvan-ui";
-
 interface Refs {}
 
 @YvanUI.BizModule()

@@ -1,4 +1,3 @@
-import * as YvanUI from "yvan-ui";
 export interface Refs {
   menuTree: YvanUI.CtlTree;
   tt: YvanUI.CtlTab;

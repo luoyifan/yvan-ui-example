@@ -1,6 +1,3 @@
-// eslint-disable-next-line
-import * as YvanUI from "yvan-ui";
-
 export type Refs = {
   txtQuery: YvanUI.CtlText;
   grid: YvanUI.CtlGrid;
@@ -25,12 +22,12 @@ export abstract class BaseGridWidget<M> extends YvanUI.BaseDialog<
   M,
   Refs,
   INP
-> {
+  > {
   dsQuery: {
     query: string;
   } = {
-    query: "",
-  };
+      query: "",
+    };
   isConfirmed: boolean = false;
 
   onLoad(): void {

@@ -1,6 +1,5 @@
 import View, { Refs } from "./singleGrid.view";
 import SingleGrid from "../template/singleGrid.data";
-import * as YvanUI from "yvan-ui";
 import singleGridDialong from "../template/singleGridDialong";
 import DialogC1 from "../DialogC1";
 

@@ -1,5 +1,3 @@
-import * as YvanUI from "yvan-ui";
-
 export interface Refs {
   c1: YvanUI.CtlECharts;
   c2: YvanUI.CtlECharts;

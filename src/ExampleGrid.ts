@@ -1,4 +1,3 @@
-import * as YvanUI from "yvan-ui";
 import ExampleData from "./ExampleGrid.data";
 
 export interface Refs {

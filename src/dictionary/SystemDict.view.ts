@@ -1,5 +1,3 @@
-import * as YvanUI from "yvan-ui";
-
 export interface Refs {
   grid1: YvanUI.CtlGrid;
   grid2: YvanUI.CtlGrid;
@@ -8,22 +6,6 @@ export interface Refs {
 
 export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
   viewResolver() {
-    YvanUI.webix.protoUI(
-      {
-        name: "myView",
-        $init: function (config: any) {
-          YvanUI.webix.ui(
-            {
-              view: "template",
-              template: "<h1>12342423</h1>",
-            },
-            this
-          );
-        },
-      },
-      YvanUI.webix.ui.view
-    );
-
     return {
       id: "12345",
       rows: [

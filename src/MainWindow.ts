@@ -1,5 +1,4 @@
 import View from "./MainWindow.view";
-import * as YvanUI from "yvan-ui";
 import Menu from "./MainWindow.menu";
 
 @YvanUI.BizModule()
@@ -102,7 +101,7 @@ export default class Module extends View<Module, void> {
   closeOther(sender: any, event: any) {
     const $dom = $(event.target);
     if ($dom.is(".webix_item_tab")) {
-      const item: any = $$(event);
+      const item: any = webix.$$(event);
       this.refs.tt.closeAll(["MainWindowFirstPage", $dom.attr("button_id")]);
     }
   }

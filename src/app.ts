@@ -1,22 +1,11 @@
 import MainWindow from "./MainWindow";
 import moment = require("moment");
-import * as V from "yvan-ui";
-_.set(window, "YvanUI", V);
-
-console.log(YvanUI);
-debugger;
-
-YvanUI.f1();
-YvanUI.f2();
-YvanUI.f3();
-YvanUI.f4();
 
 const main = new MainWindow();
-debugger;
 YvanUI.render("app", main);
 
 export default function () {
-  const ajax = V.createAjax({ baseUrl: "http://localhost:9090" });
+  const ajax = YvanUI.createAjax({ baseUrl: "http://localhost:9090" });
 
   function complexValidMessage(valid: string) {
     let msg = "";
@@ -230,14 +219,14 @@ export default function () {
     },
   };
 
-  V.extend({
+  YvanUI.extend({
     ajax,
 
     /**
      * 全局数据库
      */
     dbs: {
-      db: V.createDb({ baseUrl: "/_yvanui", ajax, defaultDb: "db" }),
+      db: YvanUI.createDb({ baseUrl: "/_yvanui", ajax, defaultDb: "db" }),
     },
 
     /**
