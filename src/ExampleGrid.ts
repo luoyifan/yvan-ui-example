@@ -42,6 +42,11 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
             },
             {
               view: "button",
+              text: "SetCheckedIds",
+              onClick: { type: "function", bind: "btnSetCheckedRowsOnClick" },
+            },
+            {
+              view: "button",
               text: "SelectedRows",
               onClick: { type: "function", bind: "btnGetSelectedRowsOnClick" },
             },
@@ -97,7 +102,7 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
           checkbox: true,
           editSingleClick: true,
           editable: true,
-          // pagination: true,
+          pagination: true,
           // pageSize: 20,
           allowNewRow: true,
           newRowData: {},
@@ -279,10 +284,10 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
     f2: string;
     f3: string;
   } = {
-    f1: "",
-    f2: "",
-    f3: "",
-  };
+      f1: "",
+      f2: "",
+      f3: "",
+    };
 
   f3() {
     console.log(this.refs.grid1.checkedIds);
@@ -319,6 +324,10 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
 
   btnGetCheckedRowsOnClick() {
     console.log("GetCheckedRows", this.refs.grid1.getCheckedRows());
+  }
+
+  btnSetCheckedRowsOnClick() {
+    this.refs.grid1.setCheckedIds(['ENT_1', 'USER0000004', 'USER0000005']);
   }
 
   btnGetSelectedRowOnClick() {

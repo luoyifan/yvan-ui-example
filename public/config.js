@@ -15,10 +15,9 @@ require.config({
 });
 
 $(document).ready(function () {
-    require(['yvan-ui', 'moment', 'polyfill'], function (yvanui, moment, polyfill) {
+    require(['yvan-ui', 'moment', 'polyfill'], function (yvanui, moment) {
         window.YvanUI = yvanui;
         window.moment = moment;
-        debugger
         require(['app'])
     })
 });

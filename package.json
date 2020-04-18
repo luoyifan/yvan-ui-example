@@ -4,7 +4,7 @@
   "private": true,
   "typings": "types/index.d.ts",
   "scripts": {
-    "serve": "live-server ./public --port=9090 --mount=/dist2:./node_modules/yvan-ui/dist --mount=/src:./src"
+    "serve": "live-server ./public --port=9090 --mount=/dist2:./node_modules/yvan-ui/dist --mount=/src:./src --wait=9999999"
   },
   "dependencies": {
     "@types/jquery": "^3.3.31",

@@ -4,6 +4,21 @@ import moment = require("moment");
 const main = new MainWindow();
 YvanUI.render("app", main);
 
+YvanUI.msgError = function (msg: string) {
+  const toastr = _.get(window, 'toastr');
+  toastr.error(msg, '错误')
+}
+
+YvanUI.msgInfo = function (msg: string) {
+  const toastr = _.get(window, 'toastr');
+  toastr.info(msg)
+}
+
+YvanUI.msgSuccess = function (msg: string) {
+  const toastr = _.get(window, 'toastr');
+  toastr.success(msg, '成功')
+}
+
 export default function () {
   const ajax = YvanUI.createAjax({ baseUrl: "http://localhost:9090" });
 
