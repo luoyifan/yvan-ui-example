@@ -102,6 +102,15 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
             },
             {
               view: "button",
+              text: "msgInfo",
+              width: 250,
+              onClick: {
+                type: "function",
+                bind: "msgInfoDemo",
+              },
+            },
+            {
+              view: "button",
               text: "msgSuccess",
               width: 250,
               onClick: {
@@ -156,6 +165,10 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
 
   msgErrorDemo() {
     YvanUI.msgError("这里是 msgError 对话框");
+  }
+
+  msgInfoDemo() {
+    YvanUI.msgInfo("这里是 msgInfo 对话框");
   }
 
   msgSuccessDemo() {
