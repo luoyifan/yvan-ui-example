@@ -1,6 +1,6 @@
 import DialogC1 from "./DialogC1";
 
-interface Refs {}
+interface Refs { }
 
 @YvanUI.BizModule()
 export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
@@ -109,6 +109,15 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
                 bind: "msgSuccessDemo",
               },
             },
+            {
+              view: "button",
+              text: "loading",
+              width: 250,
+              onClick: {
+                type: "function",
+                bind: "showLoading",
+              },
+            },
             {},
           ],
         },
@@ -151,6 +160,13 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
 
   msgSuccessDemo() {
     YvanUI.msgSuccess("这里是 msgSuccess 对话框");
+  }
+
+  showLoading() {
+    YvanUI.loading('正在下载...');
+    setTimeout(() => {
+      YvanUI.clearLoading();
+    }, 3000);
   }
 
   onLoad(): void {
