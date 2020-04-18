@@ -7,7 +7,6 @@ require.config({
         axios: '/static/plugins/axios/axios.min',
         qs: '/static/plugins/qs/qs.min',
         typescript: '/static/plugins/typescript/typescript.min',
-        //typescript: 'https://cdn.bootcss.com/typescript/3.7.4/typescript.min',
         webix: '/static/plugins/webix/webix',
         moment: '/static/plugins/moment/moment.min',
         'polyfill': '/static/plugins/polyfill/polyfill.min',
