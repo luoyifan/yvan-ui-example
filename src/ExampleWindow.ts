@@ -20,7 +20,7 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
           cols: [
             {
               view: "button",
-              text: "自定义对话框1",
+              text: "对话框回调1",
               width: 250,
               onClick: {
                 type: "function",
@@ -29,13 +29,22 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
             },
             {
               view: "button",
-              text: "自定义对话框2",
+              text: "对话框回调2",
               width: 250,
               onClick: {
                 type: "function",
                 bind: "func2",
               },
             },
+            {
+              view: "button",
+              text: "对话框性能测试",
+              width: 250,
+              onClick: {
+                type: "function",
+                bind: "funcPerform",
+              },
+            }
             {},
           ],
         },
@@ -118,6 +127,11 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
                 bind: "msgSuccessDemo",
               },
             },
+            {},
+          ],
+        },
+        {
+          cols: [
             {
               view: "button",
               text: "loading",
@@ -127,8 +141,8 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
                 bind: "showLoading",
               },
             },
-            {},
-          ],
+            {}
+          ]
         },
         {},
       ],
@@ -295,7 +309,7 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
 
   func1() {
     const dialog = new DialogC1();
-
+    console.time()
     dialog.showDialog(
       {
         content: "内容1",
@@ -305,19 +319,52 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
       },
       this
     );
+    console.timeEnd()
   }
 
   func2() {
     const dialog = new DialogC1();
-
+    console.time('单次打开对话框')
     dialog.showDialog(
       {
         content: "内容2",
         success(cap: string) {
           console.log("success2", cap);
         },
+        onShow() {
+          console.timeEnd('单次打开对话框')
+        }
       },
       this
     );
+  }
+
+  funcPerform() {
+    const CC_COUNT = 200;
+
+    console.time(CC_COUNT + '次对话框性能')
+    for (let i = 0; i < 100; i++) {
+      const dialog = new DialogC1();
+      console.time('单次打开' + i);
+
+      dialog.showDialog(
+        {
+          content: "内容2",
+          success(cap: string) {
+            console.log("success2", cap);
+          },
+          onShow() {
+            dialog.closeDialog();
+          },
+          onClose() {
+            console.timeEnd('单次打开' + i);
+          }
+        },
+        this
+      );
+      dialog.closeDialog();
+
+    }
+    console.timeEnd(CC_COUNT + '次对话框性能')
   }
 }

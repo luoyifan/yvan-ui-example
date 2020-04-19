@@ -3,6 +3,8 @@ import selectOrg from "./widgets/selectOrg";
 interface INP {
   content: string;
   success: (cap: string) => void;
+  onShow?: Function;
+  onClose?: Function;
 }
 
 interface Refs { }
@@ -50,6 +52,7 @@ export default class Module extends YvanUI.BaseDialog<Module, Refs, INP> {
     return {
       title: "对话框C1-" + seq,
       width: 600,
+      modal: true,
       btn: ["按钮A", "按钮B"],
       body: {
         rows: [
@@ -94,7 +97,7 @@ export default class Module extends YvanUI.BaseDialog<Module, Refs, INP> {
                 "query.org_name": "org_name",
               },
             },
-            ...events,
+            // ...events,
           },
           {
             view: "combo",
@@ -133,10 +136,16 @@ export default class Module extends YvanUI.BaseDialog<Module, Refs, INP> {
 
   onLoad() {
     YvanUI.msg("onLoad");
+    if (this.inParamter.onShow) {
+      this.inParamter.onShow(this);
+    }
   }
 
   onClose() {
     YvanUI.msg("onClose");
+    if (this.inParamter.onClose) {
+      this.inParamter.onClose(this);
+    }
   }
 
   onEsc() {
