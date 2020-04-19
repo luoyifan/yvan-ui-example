@@ -60,7 +60,7 @@ export default [
         text: "文本框",
         icon: "fa fa-edit",
         children: [
-            {text: "Label-标签", value: Page1, key: "./exampleLabelSimple"},
+            {text: "Label-标签", value: Page1, key: "./Page1"},
             {text: "Textbox-字符串", value: TextboxString, key: "./input/exampleTextboxString"},
             {text: "Textbox-数字", value: TextboxNumber, key: "./exampleTextboxNumber"},
             {text: "Textbox-日期", value: TextboxDate, key: "./input/exampleTextboxDate"},

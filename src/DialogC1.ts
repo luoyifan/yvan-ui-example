@@ -5,14 +5,14 @@ interface INP {
   success: (cap: string) => void;
 }
 
-interface Refs {}
+interface Refs { }
 
 let seq: number = 1;
 
 const events = {
   onClick: {
     type: "function",
-    bind: "onClick",
+    bind: "onTextClick",
   },
   // onEnter: {
   //     type: 'function',
@@ -20,19 +20,19 @@ const events = {
   // },
   onFocus: {
     type: "function",
-    bind: "onFocus",
+    bind: "onTextFocus",
   },
   onChange: {
     type: "function",
-    bind: "onChange",
+    bind: "onTextChange",
   },
   onBlur: {
     type: "function",
-    bind: "onBlur",
+    bind: "onTextBlur",
   },
   onKeydown: {
     type: "function",
-    bind: "onKeydown",
+    bind: "onTextKeydown",
   },
 };
 
@@ -50,8 +50,6 @@ export default class Module extends YvanUI.BaseDialog<Module, Refs, INP> {
     return {
       title: "对话框C1-" + seq,
       width: 600,
-      height: 200,
-      modal: true,
       btn: ["按钮A", "按钮B"],
       body: {
         rows: [
@@ -81,6 +79,7 @@ export default class Module extends YvanUI.BaseDialog<Module, Refs, INP> {
                   bind: "openNew",
                 },
               },
+              {}
             ],
           },
           {
@@ -105,6 +104,7 @@ export default class Module extends YvanUI.BaseDialog<Module, Refs, INP> {
               { id: "3", text: "a3" },
               { id: "4", text: "a4" },
             ],
+            ...events,
           },
           {
             view: "combo",
@@ -114,6 +114,7 @@ export default class Module extends YvanUI.BaseDialog<Module, Refs, INP> {
               { id: "3", text: "a3" },
               { id: "4", text: "a4" },
             ],
+            ...events,
           },
           {
             view: "combo",
@@ -123,11 +124,15 @@ export default class Module extends YvanUI.BaseDialog<Module, Refs, INP> {
               { id: "3", text: "a3" },
               { id: "4", text: "a4" },
             ],
+            ...events,
           },
-          {},
         ],
       },
     };
+  }
+
+  onLoad() {
+    YvanUI.msg("onLoad");
   }
 
   onClose() {
@@ -144,6 +149,26 @@ export default class Module extends YvanUI.BaseDialog<Module, Refs, INP> {
 
   closeMe() {
     this.closeDialog();
+  }
+
+  onTextClick(sender: any) {
+    console.log('onTextClick', sender, arguments);
+  }
+
+  onTextFocus(sender: any) {
+    console.log('onTextFocus', sender, arguments);
+  }
+
+  onTextChange(sender: any) {
+    console.log('onTextChange', sender, arguments);
+  }
+
+  onTextBlur(sender: any) {
+    console.log('onTextBlur', sender, arguments);
+  }
+
+  onTextKeydown(sender: any) {
+    console.log('onTextKeydown', sender, arguments);
   }
 
   sendParent() {

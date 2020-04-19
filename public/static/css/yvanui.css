@@ -257,9 +257,21 @@ legend.webix_forminput_label,
   height: 100%;
 }
 
-/* ====================== Window ====================== */
+/* ====================== WindowNew ====================== */
+.webix_view.webix_header.webix_win_title {
+  cursor: move;
+}
+.webix_icon.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+
+/* ====================== Window ====================== 
 .layui-layer {
-  /*box-shadow: none;*/
   border-radius: 0;
   border-color: rgb(95, 162, 221);
   border-width: 2px;
@@ -291,7 +303,6 @@ legend.webix_forminput_label,
   opacity: 0.7;
 }
 
-/* 标准错误框 */
 .layui-layer-ico2 {
   color: red;
   font-size: 40px;
@@ -301,7 +312,6 @@ legend.webix_forminput_label,
   content: "\f057";
 }
 
-/* 标准问号框 */
 .layui-layer-ico3 {
   color: #5fa2dd;
   font-size: 40px;
@@ -340,6 +350,7 @@ legend.webix_forminput_label,
 .layui-layer-min {
   opacity: 0;
 }
+*/
 
 /* ====================== 表格 =========================*/
 /* 表格内编辑器 */
