@@ -44,7 +44,7 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
                 type: "function",
                 bind: "funcPerform",
               },
-            }
+            },
             {},
           ],
         },

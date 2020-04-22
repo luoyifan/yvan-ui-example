@@ -27,7 +27,7 @@ require.config({
         'yvan-ui':{
             deps:[
                 'css!//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css',
-                'css!/static/css/yvanui.css'
+                'css!/dist2/yvan-ui.css'
             ]
         },
         toastr: {

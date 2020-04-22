@@ -31,6 +31,7 @@ import ExampleTextboxComplex from './ExampleTextboxComplex'
 import ExampleTree from './ExampleTree'
 import ExampleECharts from './ExampleECharts'
 import ExampleCodeMirror from './ExampleCodeMirror'
+import ExamplePromission from './ExamplePromission'
 
 export default [
     {
@@ -44,7 +45,8 @@ export default [
         icon: "fa fa-cube",
         children: [
             {text: "采购订单", value: ExampleComplexPurchanse, key: "./ExampleComplexPurchanse"},
-            {text: "系统字典", icon: "fa fa-database", value: SystemDict, key: "./dictionary/SystemDict"}
+            {text: "系统字典", icon: "fa fa-database", value: SystemDict, key: "./dictionary/SystemDict"},
+            {text: "权限", icon: "fa fa-bars", value: ExamplePromission, key: "./ExamplePromission"}
         ]
     },
     {

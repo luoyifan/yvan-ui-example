@@ -79,7 +79,7 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
           view: "tree",
           ctlName: "theTree",
           showCheckbox: true,
-          threeState: false,
+          threeState: true,
           dataSource: {
             type: "function",
             bind: "getTreeData",
