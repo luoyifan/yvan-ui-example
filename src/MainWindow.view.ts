@@ -3,12 +3,12 @@ export interface Refs {
   tt: YvanUI.CtlTab;
 }
 
-export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
+export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
   query: {
     menuFilter: string;
   } = {
-    menuFilter: "",
-  };
+      menuFilter: "",
+    };
 
   viewResolver(): any {
     return {
@@ -112,6 +112,14 @@ export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
                   select: "multiselect",
                   // drag: "move",
                   ctlName: "menuTree",
+                  onDataComplete: {
+                    type: 'function',
+                    bind: 'treeLoadFinish'
+                  },
+                  dataSource: {
+                    type: "function",
+                    bind: "getMenu",
+                  },
                   onNodeClick: {
                     type: "function",
                     bind: "menuTreeNodeClick",

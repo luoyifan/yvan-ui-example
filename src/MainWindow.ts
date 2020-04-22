@@ -3,16 +3,6 @@ import Menu from "./MainWindow.menu";
 
 @YvanUI.BizModule()
 export default class Module extends View<Module, void> {
-  viewResolver(): any {
-    return YvanUI.viewExtend(super.viewResolver(), {
-      menuTree: {
-        dataSource: {
-          type: "function",
-          bind: "getMenu",
-        },
-      },
-    });
-  }
 
   i = 0;
 
@@ -44,6 +34,19 @@ export default class Module extends View<Module, void> {
     param.successCallback(convert(Menu));
   }
 
+  treeLoadFinish(){
+    if ($.trim(window.location.hash).length > 1) {
+      const vv = YvanUI.unparam(window.location.hash);
+      if (vv.key && this.refs.menuTree) {
+        const node = this.refs.menuTree.getItem(vv.key);
+        if (node) {
+          this.refs.menuTree.select(vv.key);
+          this.menuTreeNodeClick(this.refs.tt, node);
+        }
+      }
+    }
+  }
+
   menuTreeNodeClick(sender: any, node: any) {
     console.log("32434234234");
     if (this.refs.tt.selectTab(node.id)) {
@@ -51,6 +54,7 @@ export default class Module extends View<Module, void> {
     }
     if (node.module) {
       const module: any = new node.module();
+      debugger
       this.refs.tt.addModule(node.value, node.id, module);
     }
   }
@@ -64,16 +68,6 @@ export default class Module extends View<Module, void> {
   }
 
   onLoad() {
-    if ($.trim(window.location.hash).length > 1) {
-      const vv = YvanUI.unparam(window.location.hash);
-      if (vv.key && this.refs.menuTree) {
-        const node = this.refs.menuTree.getItem(vv.key);
-        if (node) {
-          this.refs.menuTree.select(vv.key);
-          this.menuTreeNodeClick(this.refs.tt, node);
-        }
-      }
-    }
     _.extend(window, {
       addTab: this.refs.tt.addModule.bind(this.refs.tt),
     });
