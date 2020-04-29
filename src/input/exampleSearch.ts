@@ -48,17 +48,17 @@ const events = {
 
 @YvanUI.BizModule()
 export default abstract class Module extends YvanUI.BaseModule<
-  Module,
-  Refs,
-  void
+Module,
+Refs,
+void
 > {
   query: {
     org_id: string;
     org_name: string;
   } = {
-    org_id: "zz1v",
-    org_name: "zz1",
-  };
+      org_id: "zz1v",
+      org_name: "zz1",
+    };
 
   dsMain: {
     suppliercode: string;
@@ -70,15 +70,15 @@ export default abstract class Module extends YvanUI.BaseModule<
     suppliertel: string;
     supplieraddress: string;
   } = {
-    suppliercode: "",
-    suppliername: "",
-    supplierprovince: "",
-    suppliercity: "",
-    supplierzip: "",
-    suppliercontact: "",
-    suppliertel: "",
-    supplieraddress: "",
-  };
+      suppliercode: "",
+      suppliername: "",
+      supplierprovince: "",
+      suppliercity: "",
+      supplierzip: "",
+      suppliercontact: "",
+      suppliertel: "",
+      supplieraddress: "",
+    };
 
   viewResolver() {
     const qs = {
@@ -102,9 +102,9 @@ export default abstract class Module extends YvanUI.BaseModule<
     };
 
     return {
-      css: {
-        padding: "0 10px",
-      },
+      view: "form",
+      type: "space",
+      scroll: true,
       rows: [
         {
           cols: [
@@ -144,145 +144,139 @@ export default abstract class Module extends YvanUI.BaseModule<
           ],
         },
         {
-          cols: [
-            {
-              view: "fieldset",
-              label: "组织机构",
-              body: {
-                rows: [
+          view: "fieldset",
+          label: "组织机构",
+          body: {
+            rows: [
+              {
+                cols: [
                   {
-                    cols: [
-                      {
-                        view: "search",
-                        ctlName: "seachboxOrgName",
-                        entityName: "query.org_name",
-                        label: "组织机构查找",
-                        widget: {
-                          content: selectOrg,
-                          bind: {
-                            "query.org_id": "org_id",
-                            "query.org_name": "org_name",
-                          },
-                        },
-                        ...events,
+                    view: "search",
+                    ctlName: "seachboxOrgName",
+                    entityName: "query.org_name",
+                    label: "组织机构查找",
+                    widget: {
+                      content: selectOrg,
+                      bind: {
+                        "query.org_id": "org_id",
+                        "query.org_name": "org_name",
                       },
-                      {},
-                    ],
+                    },
+                    ...events,
                   },
-                  {
-                    cols: [
-                      {
-                        label: "组织机构编号",
-                        entityName: "query.org_id",
-                        view: "text",
-                        ...events,
-                      },
-                      {
-                        label: "组织机构名称",
-                        entityName: "query.org_name",
-                        view: "text",
-                        ...events,
-                      },
-                      {},
-                    ],
-                  },
+                  {},
                 ],
               },
-            },
-            {},
-          ],
+              {
+                cols: [
+                  {
+                    label: "组织机构编号",
+                    entityName: "query.org_id",
+                    view: "text",
+                    ...events,
+                  },
+                  {
+                    label: "组织机构名称",
+                    entityName: "query.org_name",
+                    view: "text",
+                    ...events,
+                  },
+                  {},
+                ],
+              },
+              { template: "" },
+            ],
+          },
         },
         {
-          cols: [
-            {
-              view: "fieldset",
-              label: "供应商",
-              body: {
-                rows: [
+          view: "fieldset",
+          label: "供应商",
+          body: {
+            rows: [
+              {
+                cols: [
                   {
-                    cols: [
-                      {
-                        view: "search",
-                        ctlName: "suppliercode",
-                        entityName: "dsMain.suppliercode",
-                        label: "客户编号",
-                        ...qs,
-                        ...events,
-                      },
-                      {
-                        view: "search",
-                        ctlName: "suppliername",
-                        entityName: "dsMain.suppliername",
-                        label: "客户名称",
-                        ...qs,
-                        ...events,
-                      },
-                    ],
+                    view: "search",
+                    ctlName: "suppliercode",
+                    entityName: "dsMain.suppliercode",
+                    label: "客户编号",
+                    ...qs,
+                    ...events,
                   },
                   {
-                    cols: [
-                      {
-                        label: "联系人",
-                        ctlName: "suppliercontact",
-                        entityName: "dsMain.suppliercontact",
-                        view: "text",
-                      },
-                      {
-                        label: "电话",
-                        ctlName: "suppliertel",
-                        entityName: "dsMain.suppliertel",
-                        view: "text",
-                      },
-                      {
-                        label: "地址",
-                        ctlName: "supplieraddress",
-                        entityName: "dsMain.supplieraddress",
-                        view: "text",
-                      },
-                    ],
-                  },
-                  {
-                    cols: [
-                      {
-                        label: "省",
-                        view: "text",
-                        ctlName: "supplierprovince",
-                        entityName: "dsMain.supplierprovince",
-                        disabled: true,
-                      },
-                      {
-                        label: "市",
-                        view: "text",
-                        ctlName: "suppliercity",
-                        entityName: "dsMain.suppliercity",
-                        disabled: true,
-                      },
-                      {
-                        label: "邮编",
-                        ctlName: "supplierzip",
-                        entityName: "dsMain.supplierzip",
-                        view: "text",
-                        disabled: true,
-                      },
-                    ],
-                  },
-                  {
-                    cols: [
-                      {
-                        label: "备注",
-                        ctlName: "supplierremark",
-                        entityName: "dsMain.supplierremark",
-                        view: "text",
-                      },
-                    ],
+                    view: "search",
+                    ctlName: "suppliername",
+                    entityName: "dsMain.suppliername",
+                    label: "客户名称",
+                    ...qs,
+                    ...events,
                   },
                 ],
               },
-            },
-            {},
-          ],
+              {
+                cols: [
+                  {
+                    label: "联系人",
+                    ctlName: "suppliercontact",
+                    entityName: "dsMain.suppliercontact",
+                    view: "text",
+                  },
+                  {
+                    label: "电话",
+                    ctlName: "suppliertel",
+                    entityName: "dsMain.suppliertel",
+                    view: "text",
+                  },
+                  {
+                    label: "地址",
+                    ctlName: "supplieraddress",
+                    entityName: "dsMain.supplieraddress",
+                    view: "text",
+                  },
+                ],
+              },
+              {
+                cols: [
+                  {
+                    label: "省",
+                    view: "text",
+                    ctlName: "supplierprovince",
+                    entityName: "dsMain.supplierprovince",
+                    disabled: true,
+                  },
+                  {
+                    label: "市",
+                    view: "text",
+                    ctlName: "suppliercity",
+                    entityName: "dsMain.suppliercity",
+                    disabled: true,
+                  },
+                  {
+                    label: "邮编",
+                    ctlName: "supplierzip",
+                    entityName: "dsMain.supplierzip",
+                    view: "text",
+                    disabled: true,
+                  },
+                ],
+              },
+              {
+                cols: [
+                  {
+                    label: "备注",
+                    ctlName: "supplierremark",
+                    entityName: "dsMain.supplierremark",
+                    view: "text",
+                  },
+                ],
+              },
+              { template: "" },
+            ],
+          },
         },
-        {},
+        {
+          template: "",
+        },
       ],
     };
   }
@@ -326,6 +320,6 @@ export default abstract class Module extends YvanUI.BaseModule<
   property: {
     value: string;
   } = {
-    value: "当前值",
-  };
+      value: "当前值",
+    };
 }
