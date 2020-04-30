@@ -1,12 +1,13 @@
 require.config({
-    baseUrl: 'dist/',
-    paths: {
-        webix: '/static/plugins/webix/webix',
-        'pinyinTong': '/static/plugins/pinyin/pinyin_dict_withtone',
-        'pinyinUtil': '/static/plugins/pinyin/pinyinUtil',
-        'yvan-ui': '/dist2/yvan-ui',
+  baseUrl: "dist/",
+  paths: {
+    webix: "/static/plugins/webix/webix",
+    pinyinTong: "/static/plugins/pinyin/pinyin_dict_withtone",
+    pinyinUtil: "/static/plugins/pinyin/pinyinUtil",
+    "yvan-ui": "/dist2/yvan-ui",
 
         tslib: '//cdn.bootcss.com/tslib/1.11.1/tslib.min',
+      echarts: "//cdn.bootcdn.net/ajax/libs/echarts/4.7.0/echarts.min",
         xterm: '/static/plugins/xterm/xterm',
         vue: '//cdn.bootcss.com/vue/2.6.11/vue.min',
         axios: '//cdn.bootcss.com/axios/0.19.2/axios.min',
@@ -56,19 +57,27 @@ require.config({
     }
 });
 
-require(['yvan-ui', 'moment', 'toastr', 'jquery', 'lodash', 'pinyinTong', 'polyfill'], function (yvanui, moment, toastr, $, _) {
-    window.YvanUI = yvanui;
-    window.moment = moment;
-    window.toastr = toastr;
-    window.$ = $;
-    window._ = _;
+require([
+  "yvan-ui",
+  "moment",
+  "toastr",
+  "jquery",
+  "lodash",
+  "pinyinTong",
+  "polyfill",
+], function (yvanui, moment, toastr, $, _) {
+  window.YvanUI = yvanui;
+  window.moment = moment;
+  window.toastr = toastr;
+  window.$ = $;
+  window._ = _;
 
-    // 载入词典完毕之后，再载入 pinyinUtil
-    require(['pinyinUtil'], function () {
-        window.getFirstPinyin = function (value) {
-            return window.pinyinUtil.getFirstLetter(value, true).join('')
-        }
-    })
+  // 载入词典完毕之后，再载入 pinyinUtil
+  require(["pinyinUtil"], function () {
+    window.getFirstPinyin = function (value) {
+      return window.pinyinUtil.getFirstLetter(value, true).join("");
+    };
+  });
 
-    require(['app'])
+  require(["app"]);
 });

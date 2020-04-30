@@ -1,12 +1,16 @@
 interface Refs {
-  input1: YvanUI.CtlText;
   rows: YvanUI.CtlText;
   cols: YvanUI.CtlText;
-  clearBtn: YvanUI.CtlButton;
+  checkbox1: YvanUI.CtlCheckBox;
+  switch1: YvanUI.CtlSwitch;
+  radio1: YvanUI.CtlRadio;
 }
 
 @YvanUI.BizModule()
 export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
+
+  showType: string = "checkbox";
+
   onShow(): void {
     _.extend(window, {
       module: this,
@@ -46,20 +50,18 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
               },
               {
                 view: "button",
-                text: "渲染",
-                onClick: { type: "function", bind: "render" },
+                text: "渲染checkbox",
+                onClick: { type: "function", bind: "rendercheckbox" },
               },
               {
                 view: "button",
-                text: "获取空白区域",
-                onClick: { type: "function", bind: "getPlace1" },
+                text: "渲染switch",
+                onClick: { type: "function", bind: "renderswitch" },
               },
               {
                 view: "button",
-                text: "清空",
-                cssType: "",
-                ctlName: "clearBtn",
-                onClick: { type: "function", bind: "clear" },
+                text: "渲染radio",
+                onClick: { type: "function", bind: "renderradio" },
               },
               { template: "" },
             ],
@@ -71,10 +73,6 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
   }
 
   ttt = 1;
-
-  getPlace1() {
-    console.log(this.getPlace("thePlace"));
-  }
 
   clear() {
     const vjson: any = { rows: [] };
@@ -89,6 +87,21 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
     console.timeEnd("thetest");
   }
 
+  rendercheckbox() {
+    this.showType = "checkbox";
+    this.render();
+  }
+
+  renderswitch() {
+    this.showType = "switch";
+    this.render();
+  }
+
+  renderradio() {
+    this.showType = "radio";
+    this.render();
+  }
+
   render() {
     if (!_.parseInt(this.refs.rows.value)) {
       YvanUI.msg("rows 必须是数字");
@@ -99,6 +112,8 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
       return;
     }
 
+    this.clear();
+
     const rows = _.toNumber(this.refs.rows.value);
     const cols = _.toNumber(this.refs.cols.value);
     const vjson: any = { rows: [] };
@@ -106,14 +121,15 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
       const row: any = { cols: [] };
       for (let j = 0; j < cols; j++) {
         row.cols.push({
-          ctlName: `button${i}_${j}`,
-          view: "button",
+          ctlName: this.showType + `${i}_${j}`,
+          view: this.showType,
           text: `按钮${i * cols + j + 1}(${i},${j})第${this.ttt}次`,
           cssType: j % 3 === 0 ? "danger" : j % 3 === 1 ? "primary" : "",
           onClick: function () {
-            console.log(`button${i}_${j}, clicked`);
+            console.log(this.showType + `${i}_${j}, clicked`);
           },
           width: 200,
+          options: itemData
         });
       }
       row.cols.push({});
@@ -140,3 +156,8 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
     });
   }
 }
+
+const itemData = [
+  { id: "first", text: "第一" },
+  { id: "second", text: "第二" }
+];

@@ -22,14 +22,6 @@ export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
           },
           borderless: true,
           cols: [
-            {
-              view: "template",
-              borderless: true,
-              css: {
-                background:
-                  "url(/static/images/logo.png) left center no-repeat",
-              },
-            },
             {},
             {
               view: "menu",

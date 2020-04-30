@@ -4,6 +4,10 @@ interface Refs {
 
 @YvanUI.BizModule()
 export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
+
+  changeText: string = "默认语句";
+  i: number = 0;
+
   onShow(): void {
     _.extend(window, {
       module: this,
@@ -23,7 +27,7 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
                 bind: "render",
               },
               ctlName: "btn1",
-              text: "默认",
+              text: "默认点击事件",
               icon: "fa fa-bars",
               onClick: {
                 type: "function",
@@ -76,6 +80,34 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
           ],
         },
         {
+          cols: [
+            {
+              view: "button",
+              text: "默认",
+              badge: 12
+            },
+            {
+              view: "button",
+              text: "主要",
+              cssType: "primary",
+              badge: "122"
+            },
+            {
+              view: "button",
+              text: "红色警告",
+              cssType: "danger",
+              badge: 2
+            },
+            {
+              view: "button",
+              text: "绿色成功",
+              cssType: "success",
+              badge: "成为"
+            },
+            {},
+          ],
+        },
+        {
           view: "toolbar",
           elements: [
             {
@@ -100,29 +132,6 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
             {
               view: "button",
               text: "绿色成功",
-              cssType: "success",
-            },
-            {
-              view: "button",
-              text: "默认",
-              icon: "fa fa-bars",
-            },
-            {
-              view: "button",
-              text: "主要",
-              icon: "fa fa-bars",
-              cssType: "primary",
-            },
-            {
-              view: "button",
-              text: "红色警告",
-              icon: "fa fa-bars",
-              cssType: "danger",
-            },
-            {
-              view: "button",
-              text: "绿色成功",
-              icon: "fa fa-bars",
               cssType: "success",
             },
             {},
@@ -140,25 +149,6 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
             {
               view: "button",
               text: "默认",
-            },
-            {
-              view: "button",
-              text: "主要",
-              cssType: "primary",
-            },
-            {
-              view: "button",
-              text: "红色警告",
-              cssType: "danger",
-            },
-            {
-              view: "button",
-              text: "绿色成功",
-              cssType: "success",
-            },
-            {
-              view: "button",
-              text: "默认",
               icon: "fa fa-bars",
             },
             {
@@ -183,7 +173,16 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
           ],
         },
         {
-          template: "在控制台 btn1 就代表按钮",
+          template: "",
+          height: 100
+        },
+        {
+          view: "text",
+          label: "点击事件的显示",
+          entityName: "changeText",
+        },
+        {
+          template: "",
         },
       ],
     };
@@ -195,6 +194,8 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
   }
 
   click1() {
-    console.log("click1");
+    console.log("点击");
+    this.i++;
+    this.changeText = "点击了" + this.i + "次";
   }
 }
