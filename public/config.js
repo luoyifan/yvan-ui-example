@@ -17,6 +17,7 @@ require.config({
     toastr: '//cdn.bootcss.com/toastr.js/2.1.4/toastr.min',
     jquery: '//cdn.bootcss.com/jquery/1.11.3/jquery.min',
     lodash: '//cdn.bootcss.com/lodash.js/4.17.15/lodash.min',
+    'xterm-addon-fit': '/static/plugins/xterm/xterm-addon-fit',
     'ag-grid': '//cdn.bootcss.com/ag-grid/23.0.2/ag-grid-community.min.noStyle.min',
     'polyfill': '//cdn.bootcss.com/babel-polyfill/7.8.7/polyfill.min',
   },
