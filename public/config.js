@@ -7,6 +7,7 @@ require.config({
         'yvan-ui': '/dist2/yvan-ui',
 
         tslib: '//cdn.bootcss.com/tslib/1.11.1/tslib.min',
+        xterm: '/static/plugins/xterm/xterm',
         vue: '//cdn.bootcss.com/vue/2.6.11/vue.min',
         axios: '//cdn.bootcss.com/axios/0.19.2/axios.min',
         qs: '//cdn.bootcss.com/qs/6.9.3/qs.min',
@@ -28,6 +29,12 @@ require.config({
             deps:[
                 'css!//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css',
                 'css!/dist2/yvan-ui.css'
+            ]
+        },
+        xterm: {
+            deps: [
+                // 'css!//cdn.bootcss.com/xterm/3.14.5/xterm.min.css'
+                'css!/static/plugins/xterm/xterm.css'
             ]
         },
         toastr: {
