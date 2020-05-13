@@ -6,6 +6,7 @@ require.config({
     pinyinUtil: "/static/plugins/pinyin/pinyinUtil",
     "yvan-ui": "/dist2/yvan-ui",
 
+    'reflect-metadata': '//cdn.bootcss.com/reflect-metadata/0.1.13/Reflect.min',
     tslib: '//cdn.bootcss.com/tslib/1.11.1/tslib.min',
     echarts: "//cdn.bootcdn.net/ajax/libs/echarts/4.7.0/echarts.min",
     xterm: '/static/plugins/xterm/xterm',

@@ -114,7 +114,10 @@ export default [
     {
         text: "IDE",
         icon: "fa fa-file-code-o",
-        children: [{ text: "CodeMirror", key: "./ExampleCodeMirror" }]
+        children: [
+            { text: "CodeMirror", key: "./ExampleCodeMirror" },
+            { text: "consolelog", key: "./ExampleConsolelog" }
+        ]
     },
     // {
     //     text: "图片上传",
