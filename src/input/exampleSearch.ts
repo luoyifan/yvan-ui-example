@@ -169,7 +169,7 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
                     entityName: "query.org_id",
                     view: "text",
                     validate: function (value) {
-                      if (value.length < 3) {
+                      if (!value || value.length < 3) {
                         return '输入长度必须大于等于3'
                       }
                     },
@@ -180,7 +180,7 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
                     entityName: "query.org_name",
                     view: "text",
                     validate: function (value) {
-                      if (value.length < 5) {
+                      if (!value || value.length < 5) {
                         return '输入长度必须大于等于5'
                       }
                     },
@@ -191,7 +191,7 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
                     entityName: "qqq",
                     view: "text",
                     validate: function (value) {
-                      if (value.length < 10) {
+                      if (!value || value.length < 10) {
                         return '输入长度必须大于等于10'
                       }
                     },
@@ -349,12 +349,13 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
     console.log("提交")
     this.validate('query').then((res) => {
       YvanUI.msg('校验成功');
+      console.log(this.query);
     }).catch(e => {
       console.log('校验错误', e)
-      _.forEach(e, (value, key) => {
-        YvanUI.msg(key + value);
-        YvanUI.msgInfo(key + value);
-      });
+      // _.forEach(e, (value, key) => {
+      //   YvanUI.msg(key + value);
+      //   YvanUI.msgInfo(key + value);
+      // });
     });
   }
 
