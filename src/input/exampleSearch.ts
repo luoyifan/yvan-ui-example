@@ -47,18 +47,13 @@ const events = {
 };
 
 @YvanUI.BizModule()
-export default abstract class Module extends YvanUI.BaseModule<
-Module,
-Refs,
-void
-> {
-  query: {
-    org_id: string;
-    org_name: string;
-  } = {
-      org_id: "zz1v",
-      org_name: "zz1",
-    };
+export default abstract class Module extends YvanUI.BaseModule<Module, Refs, void> {
+  query = {
+    org_id: "zz1v",
+    org_name: "zz1",
+  };
+
+  qqq: string = '';
 
   dsMain: {
     suppliercode: string;
@@ -173,12 +168,33 @@ void
                     label: "组织机构编号",
                     entityName: "query.org_id",
                     view: "text",
+                    validate: function (value) {
+                      if (value.length < 3) {
+                        return '输入长度必须大于等于3'
+                      }
+                    },
                     ...events,
                   },
                   {
                     label: "组织机构名称",
                     entityName: "query.org_name",
                     view: "text",
+                    validate: function (value) {
+                      if (value.length < 5) {
+                        return '输入长度必须大于等于5'
+                      }
+                    },
+                    ...events,
+                  },
+                  {
+                    label: "组织机构名称",
+                    entityName: "qqq",
+                    view: "text",
+                    validate: function (value) {
+                      if (value.length < 10) {
+                        return '输入长度必须大于等于10'
+                      }
+                    },
                     ...events,
                   },
                   {},
@@ -270,6 +286,19 @@ void
                   },
                 ],
               },
+              {
+                cols: [
+                  {
+                    text: "提交",
+                    view: "button",
+                    onClick: {
+                      type: "function",
+                      bind: "btnClick",
+                    },
+                  },
+                  {}
+                ]
+              },
               { template: "" },
             ],
           },
@@ -314,6 +343,19 @@ void
 
   onKeydown(sender: any, event: KeyboardEvent) {
     // console.log(sender.ctlName + " onKeydown", event);
+  }
+
+  btnClick() {
+    console.log("提交")
+    this.validate('query').then((res) => {
+      YvanUI.msg('校验成功');
+    }).catch(e => {
+      console.log('校验错误', e)
+      _.forEach(e, (value, key) => {
+        YvanUI.msg(key + value);
+        YvanUI.msgInfo(key + value);
+      });
+    });
   }
 
   i: number = 1;
