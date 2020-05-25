@@ -1,0 +1,45 @@
+debug: false
+port: 8084
+
+spring:
+  application:
+    name: jzt-mes
+  datasource:
+    dynamic:
+      datasource-map:
+        master:
+          type: com.alibaba.druid.pool.DruidDataSource
+          driver-class-name: oracle.jdbc.OracleDriver
+          url: jdbc:oracle:thin:@10.7.7.43:1521:branch
+          dbType: oracle
+          username: jgzy
+          password: jgzytest
+
+serverless:
+  client:
+    - url: '/**'
+      location: './client/public'
+    - url: '/dist/**'
+      location: './dist/client/src'
+    - url: '/client/src/**'
+      location: './client/src'
+    - url: '/dist2/**'
+      location: './client/node_modules'
+
+  typescript:
+    inspect: true
+    inspectPort: 9499
+    url: '/!'
+    srcLocation: ./server/src
+    distLocation: ./server/dist
+
+mybatis-plus:
+  mapper-locations: ['file:./server/src/**/*.xml']
+  id-type: 2
+  field-strategy: 2
+  db-column-underline: true
+  refresh-mapper: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+  # type-handlers-package: com.yvan.mybatis.handler

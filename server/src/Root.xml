@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Root">
+
+    <select id="selectCombo" resultType="java.util.Map">
+        select t.tp_code, d.dict_code, d.dict_name
+        from sys_dict_tp t
+                 inner join sys_dict d on t.dict_tp = d.dict_tp
+    </select>
+
+    <select id="testForeach" resultType="java.util.Map">
+        select * from hr_org where ORG_CODE in (
+        <foreach item="item" collection="data" index="index" separator=",">
+            #{item}
+        </foreach>)
+    </select>
+
+    <select id="testForeach2" resultType="java.util.Map">
+        select * from hr_org where ORG_CODE in (
+        <foreach item="item" collection="data" index="index" separator=",">
+            #{item.f1}, #{item.f2}
+        </foreach>
+        )
+    </select>
+
+</mapper>

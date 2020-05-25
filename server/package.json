@@ -1,0 +1,14 @@
+{
+  "name": "yvan-serverless-demo",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "tsc -w"
+  },
+  "devDependencies": {
+    "reflect-metadata": "^0.1.13",
+    "tslib": "^1.11.1",
+    "typescript": "~3.7.4",
+    "yvan-server": "^0.1.16"
+  }
+}
