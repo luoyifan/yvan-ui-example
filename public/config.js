@@ -1,10 +1,11 @@
 require.config({
   baseUrl: "dist/",
   paths: {
-    webix: "/static/plugins/webix/webix",
-    pinyinTong: "/static/plugins/pinyin/pinyin_dict_withtone",
-    pinyinUtil: "/static/plugins/pinyin/pinyinUtil",
-    "yvan-ui": "/dist2/yvan-ui",
+    '@server': '/!',
+    webix: '/static/plugins/webix/webix',
+    'pinyinTong': '/static/plugins/pinyin/pinyin_dict_withtone',
+    'pinyinUtil': '/static/plugins/pinyin/pinyinUtil',
+    'yvan-ui': '/dist2/yvan-ui',
 
     'reflect-metadata': '//cdn.bootcss.com/reflect-metadata/0.1.13/Reflect.min',
     tslib: '//cdn.bootcss.com/tslib/1.11.1/tslib.min',
@@ -31,6 +32,9 @@ require.config({
     'yvan-ui': {
       deps: [
         'css!//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css',
+        'css!/static/css/webix.css',
+        'css!/static/plugins/ag-grid/styles/ag-grid.css',
+        'css!/static/plugins/ag-grid/styles/ag-theme-blue.css',
         'css!/dist2/yvan-ui.css'
       ]
     },
@@ -45,17 +49,6 @@ require.config({
         'css!//cdn.bootcss.com/toastr.js/2.1.4/toastr.min.css'
       ]
     },
-    webix: {
-      deps: [
-        'css!/static/css/webix.css'
-      ]
-    },
-    'ag-grid': {
-      deps: [
-        'css!//cdn.bootcss.com/ag-grid/23.0.2/styles/ag-grid.min.css',
-        'css!//cdn.bootcss.com/ag-grid/23.0.2/styles/ag-theme-blue.min.css'
-      ]
-    }
   }
 });
 
