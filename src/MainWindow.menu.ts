@@ -264,5 +264,11 @@ export default [
         parentId: '12',
         text: "consolelog",
         menu_url: "./ExampleConsolelog"
-    }
+    },
+    {
+        id: '13',
+        text: 'ExampleIcons',
+        icon: 'fa fa-bars',
+        menu_url: "./ExampleIcons"
+    },
 ];
