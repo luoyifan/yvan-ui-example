@@ -49,7 +49,7 @@ const events = {
 @YvanUI.BizModule()
 export default abstract class Module extends YvanUI.BaseModule<Module, Refs, void> {
   query = {
-    org_id: "zz1v",
+    org_id: "z",
     org_name: "zz1",
   };
 
@@ -195,6 +195,7 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
                         return '输入长度必须大于等于10'
                       }
                     },
+                    required: true,
                     ...events,
                   },
                   {},
@@ -296,6 +297,14 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
                       bind: "btnClick",
                     },
                   },
+                  {
+                    text: "提交",
+                    view: "button",
+                    onClick: {
+                      type: "function",
+                      bind: "btnClick2",
+                    },
+                  },
                   {}
                 ]
               },
@@ -345,9 +354,14 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
     // console.log(sender.ctlName + " onKeydown", event);
   }
 
+  @YvanUI.Watch('dsMain.suppliercode')
+  codeValueChanged(value) {
+    console.log("值改变了：", value)
+  }
+
   btnClick() {
     console.log("提交")
-    this.validate('query').then((res) => {
+    this.validate('qqq').then((res) => {
       YvanUI.msg('校验成功');
       console.log(this.query);
     }).catch(e => {
@@ -357,6 +371,10 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
       //   YvanUI.msgInfo(key + value);
       // });
     });
+  }
+
+  btnClick2() {
+    console.log("提交2", this.dsMain);
   }
 
   i: number = 1;

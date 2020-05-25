@@ -1,31 +1,32 @@
 export interface Refs {
-  menuTree: YvanUI.CtlTree;
-  tt: YvanUI.CtlTab;
+  menuTree: YvanUI.CtlTree
+  tt: YvanUI.CtlTab
 }
 
 export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
-  query: {
-    menuFilter: string;
-  } = {
-      menuFilter: "",
-    };
+  query = {
+    menuFilter: '',
+  };
 
   viewResolver(): any {
     return {
       rows: [
         {
           view: "toolbar",
-          height: 63,
-          type: "line",
-          css: {
-            "background-color": "#5fa2dd",
-          },
+          height: 73,
+          css: 'mainHeader',
           borderless: true,
           cols: [
+            {
+              view: "template",
+              borderless: true,
+              template: '<h2 style="padding-left: 50px;">YvanUI示例</h2>'
+            },
             {},
             {
               view: "menu",
               width: 150,
+              css: 'headerMenu',
               data: [
                 {
                   value: "管理员",
@@ -40,92 +41,60 @@ export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
                 subsign: true,
               },
             },
-          ],
+          ]
         },
         {
+          css: 'mainBox',
           cols: [
             {
               width: 260,
+              css: 'mainLeft',
               rows: [
                 {
                   view: "form",
                   type: "line",
                   rows: [
                     {
-                      cols: [
-                        {
-                          view: "text",
-                          placeholder: "查找功能",
-                          width: "auto",
-                          entityName: "query.menuFilter",
-                          changeValueImplete: true,
-                        },
-                        {
-                          view: "button",
-                          value: "全部展开",
-                          type: "icon",
-                          icon: "fa fa-expand",
-                          badge: 5,
-                          width: 50,
-                          onClick: {
-                            type: "function",
-                            bind: "expandAll",
-                          },
-                        },
-                        {
-                          view: "button",
-                          value: "全部收起",
-                          type: "icon",
-                          icon: "fa fa-compress",
-                          badge: 10,
-                          width: 50,
-                          onClick: {
-                            type: "function",
-                            bind: "collapseAll",
-                          },
-                        },
-                        {
-                          view: "button",
-                          type: "icon",
-                          icon: "fa fa-refresh",
-                          badge: 10,
-                          width: 50,
-                          onClick: {
-                            type: "function",
-                            bind: "refreshMenu",
-                          },
-                        },
-                      ],
-                    },
-                  ],
+                      view: "text",
+                      prompt: "功能筛选",
+                      entityName: 'query.menuFilter',
+                      changeValueImplete: true
+                    }
+                  ]
                 },
                 {
                   view: "tree",
                   select: "multiselect",
                   // drag: "move",
-                  ctlName: "menuTree",
+                  ctlName: 'menuTree',
                   onDataComplete: {
-                    type: 'function',
-                    bind: 'treeLoadFinish'
+                    type: "function",
+                    bind: "menuLoadFinish"
                   },
                   dataSource: {
                     type: "function",
                     bind: "getMenu",
+                    displayField: 'text',
+                    valueField: 'id',
+                    parentField: 'parentId'
                   },
                   onNodeClick: {
-                    type: "function",
-                    bind: "menuTreeNodeClick",
+                    type: 'function',
+                    bind: 'menuNodeClick'
                   },
-                },
-              ],
+                }
+              ]
             },
-            {
-              view: "resizer",
-            },
+            { view: 'resizer' },
             {
               view: "tabview",
               css: "maintab",
               ctlName: "tt",
+              id: 'tt',
+              onRender: {
+                type: 'function',
+                bind: 'ttOnRender'
+              },
               onTabChanged: {
                 type: "function",
                 bind: "ttOnTabChanged",
@@ -163,7 +132,7 @@ export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
               },
               cells: [
                 {
-                  header: "首页",
+                  header: `<div class="myTabDiv">首页</div>`,
                   close: false,
                   body: {
                     id: "MainWindowFirstPage",
@@ -173,8 +142,7 @@ export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
               ],
             },
           ],
-        },
-        { template: "底部栏", height: 35 },
+        }
       ],
     };
   }

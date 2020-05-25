@@ -1,7 +1,7 @@
 export interface Refs {
   treeTable: YvanUI.CtlTreeTable;
 }
-export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
+export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
   refs!: Refs;
 
   viewResolver() {
@@ -31,9 +31,9 @@ export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
               template: "{common.treetable()} #chapter#",
             },
           ],
-          filterMode: {
-            level: 1,
-          },
+          // filterMode: {
+          //   level: 1,
+          // },
           dataSource: {
             type: "function",
             bind: "getTreeGridData",
