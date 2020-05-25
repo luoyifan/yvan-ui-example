@@ -27,10 +27,6 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
             { view: 'icon', icon: 'wxi-calendar' },
             { view: 'icon', icon: 'wxi-search' },
             { view: 'icon', icon: 'wxi-dots' },
-            {}
-          ]
-        }, {
-          cols: [
             { view: 'icon', icon: 'wxi-close' },
             { view: 'icon', icon: 'wxi-checkbox-marked' },
             { view: 'icon', icon: 'wxi-checkbox-blank' },

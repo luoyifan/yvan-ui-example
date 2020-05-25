@@ -24,9 +24,12 @@ require.config({
         }
     },
     shim: {
-        'yvan-ui':{
-            deps:[
-                'css!//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css',
+        'yvan-ui': {
+            deps: [
+                'css!//cdn.bootcss.com/font-awesome/5.13.0/css/fontawesome.css',
+                'css!//cdn.bootcss.com/font-awesome/5.13.0/css/brands.css',
+                'css!//cdn.bootcss.com/font-awesome/5.13.0/css/solid.css',
+                '//cdn.bootcss.com/font-awesome/5.13.0/js/all.min.js',
                 'css!/dist2/yvan-ui.css'
             ]
         },

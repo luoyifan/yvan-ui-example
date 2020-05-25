@@ -27,7 +27,7 @@ export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
               borderless: true,
               css: {
                 background:
-                  "url(/static/images/logo.png) left center no-repeat",
+                  "url(/static/images/logo2.png) left center no-repeat",
               },
             },
             {},
@@ -64,7 +64,6 @@ export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
                         {
                           view: "text",
                           placeholder: "查找功能",
-                          width: "auto",
                           entityName: "query.menuFilter",
                           changeValueImplete: true,
                         },

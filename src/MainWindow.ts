@@ -48,13 +48,11 @@ export default class Module extends View<Module, void> {
   }
 
   menuTreeNodeClick(sender: any, node: any) {
-    console.log("32434234234");
     if (this.refs.tt.selectTab(node.id)) {
       return;
     }
     if (node.module) {
       const module: any = new node.module();
-      debugger
       this.refs.tt.addModule(node.value, node.id, module);
     }
   }
