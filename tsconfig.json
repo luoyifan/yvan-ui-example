@@ -35,6 +35,6 @@
         "outDir": "./public/dist",
         "rootDir": "./src"
     },
-    "include": ["./src/*.js", "./src/*.ts"],
+    "include": ["./src/**/*.js", "./src/**/*.ts"],
     "exclude": ["node_modules", "./public"]
 }

@@ -19,6 +19,8 @@
     "reflect-metadata": "^0.1.13",
     "tslib": "^1.11.1",
     "vue": "^2.6.10",
+    "xterm": "^4.5.0",
+    "xterm-addon-fit": "^0.3.0",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0",
     "webpack-env": "^0.8.0"

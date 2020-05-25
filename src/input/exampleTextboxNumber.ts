@@ -8,8 +8,8 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
   property: {
     value: string;
   } = {
-    value: "0",
-  };
+      value: "0",
+    };
 
   viewResolver(): any {
     return {

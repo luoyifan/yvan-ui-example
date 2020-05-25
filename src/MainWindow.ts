@@ -1,6 +1,7 @@
 import View from "./MainWindow.view";
 import Menu from "./MainWindow.menu";
 
+
 @YvanUI.BizModule()
 export default class Module extends View<Module, void> {
 
@@ -12,49 +13,58 @@ export default class Module extends View<Module, void> {
   }
 
   getMenu(sender: YvanUI.CtlTree, param: YvanUI.DataSourceParam) {
-    this.i++;
 
     //转换菜单
-    const that = this;
-
     function convert(list: any[]): any {
       if (!list) return;
-      return list.map((item) => {
+      return list.map(item => {
         return {
-          value: item.text + that.i,
+          value: item.text,
           id: item.key,
           module: item.value,
           icon: item.icon,
           data: convert(item.children),
-          $css: { padding: "5px" },
+          $css: { padding: "5px" }
         };
       });
     }
-
     param.successCallback(convert(Menu));
   }
 
-  treeLoadFinish(){
+  treeLoadFinish() {
     if ($.trim(window.location.hash).length > 1) {
       const vv = YvanUI.unparam(window.location.hash);
       if (vv.key && this.refs.menuTree) {
         const node = this.refs.menuTree.getItem(vv.key);
         if (node) {
           this.refs.menuTree.select(vv.key);
-          this.menuTreeNodeClick(this.refs.tt, node);
+          this.menuTreeNodeClick(this.refs.tt, node)
         }
       }
     }
+    _.extend(window, {
+      addTab: this.refs.tt.addModule.bind(this.refs.tt)
+    })
   }
 
   menuTreeNodeClick(sender: any, node: any) {
+    // console.log("32434234234");
+    if (!node.id) {
+      return;
+    }
     if (this.refs.tt.selectTab(node.id)) {
       return;
     }
-    if (node.module) {
-      const module: any = new node.module();
-      this.refs.tt.addModule(node.value, node.id, module);
-    }
+    import(node.id).then(value => {
+      const module: any = new value.default();
+      const title: string = node.value;
+      this.refs.tt.addModule(title, node.id, module);
+    });
+    // if (node.module) {
+    //   const module: any = new node.module();
+    //   // debugger
+    //   this.refs.tt.addModule(node.value, node.id, module);
+    // }
   }
 
   ttOnTabChanged(sender: any, newTabId: any): void {

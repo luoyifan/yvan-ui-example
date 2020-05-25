@@ -2,7 +2,7 @@ export interface Refs {
   theTab: YvanUI.CtlTab;
 }
 
-export default abstract class<M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
+export default abstract class <M, INP> extends YvanUI.BaseModule<M, Refs, INP> {
   viewResolver() {
     return {
       rows: [

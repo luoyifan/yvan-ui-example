@@ -47,18 +47,13 @@ const events = {
 };
 
 @YvanUI.BizModule()
-export default abstract class Module extends YvanUI.BaseModule<
-  Module,
-  Refs,
-  void
-> {
-  query: {
-    org_id: string;
-    org_name: string;
-  } = {
+export default abstract class Module extends YvanUI.BaseModule<Module, Refs, void> {
+  query = {
     org_id: "zz1v",
     org_name: "zz1",
   };
+
+  qqq: string = '';
 
   dsMain: {
     suppliercode: string;
@@ -70,15 +65,15 @@ export default abstract class Module extends YvanUI.BaseModule<
     suppliertel: string;
     supplieraddress: string;
   } = {
-    suppliercode: "",
-    suppliername: "",
-    supplierprovince: "",
-    suppliercity: "",
-    supplierzip: "",
-    suppliercontact: "",
-    suppliertel: "",
-    supplieraddress: "",
-  };
+      suppliercode: "",
+      suppliername: "",
+      supplierprovince: "",
+      suppliercity: "",
+      supplierzip: "",
+      suppliercontact: "",
+      suppliertel: "",
+      supplieraddress: "",
+    };
 
   viewResolver() {
     const qs = {
@@ -102,9 +97,9 @@ export default abstract class Module extends YvanUI.BaseModule<
     };
 
     return {
-      css: {
-        padding: "0 10px",
-      },
+      view: "form",
+      type: "space",
+      scroll: true,
       rows: [
         {
           cols: [
@@ -144,145 +139,173 @@ export default abstract class Module extends YvanUI.BaseModule<
           ],
         },
         {
-          cols: [
-            {
-              view: "fieldset",
-              label: "组织机构",
-              body: {
-                rows: [
+          view: "fieldset",
+          label: "组织机构",
+          body: {
+            rows: [
+              {
+                cols: [
                   {
-                    cols: [
-                      {
-                        view: "search",
-                        ctlName: "seachboxOrgName",
-                        entityName: "query.org_name",
-                        label: "组织机构查找",
-                        widget: {
-                          content: selectOrg,
-                          bind: {
-                            "query.org_id": "org_id",
-                            "query.org_name": "org_name",
-                          },
-                        },
-                        ...events,
+                    view: "search",
+                    ctlName: "seachboxOrgName",
+                    entityName: "query.org_name",
+                    label: "组织机构查找",
+                    widget: {
+                      content: selectOrg,
+                      bind: {
+                        "query.org_id": "org_id",
+                        "query.org_name": "org_name",
                       },
-                      {},
-                    ],
+                    },
+                    ...events,
                   },
-                  {
-                    cols: [
-                      {
-                        label: "组织机构编号",
-                        entityName: "query.org_id",
-                        view: "text",
-                        ...events,
-                      },
-                      {
-                        label: "组织机构名称",
-                        entityName: "query.org_name",
-                        view: "text",
-                        ...events,
-                      },
-                      {},
-                    ],
-                  },
+                  {},
                 ],
               },
-            },
-            {},
-          ],
+              {
+                cols: [
+                  {
+                    label: "组织机构编号",
+                    entityName: "query.org_id",
+                    view: "text",
+                    validate: function (value) {
+                      if (!value || value.length < 3) {
+                        return '输入长度必须大于等于3'
+                      }
+                    },
+                    ...events,
+                  },
+                  {
+                    label: "组织机构名称",
+                    entityName: "query.org_name",
+                    view: "text",
+                    validate: function (value) {
+                      if (!value || value.length < 5) {
+                        return '输入长度必须大于等于5'
+                      }
+                    },
+                    ...events,
+                  },
+                  {
+                    label: "组织机构名称",
+                    entityName: "qqq",
+                    view: "text",
+                    validate: function (value) {
+                      if (!value || value.length < 10) {
+                        return '输入长度必须大于等于10'
+                      }
+                    },
+                    ...events,
+                  },
+                  {},
+                ],
+              },
+              { template: "" },
+            ],
+          },
         },
         {
-          cols: [
-            {
-              view: "fieldset",
-              label: "供应商",
-              body: {
-                rows: [
+          view: "fieldset",
+          label: "供应商",
+          body: {
+            rows: [
+              {
+                cols: [
                   {
-                    cols: [
-                      {
-                        view: "search",
-                        ctlName: "suppliercode",
-                        entityName: "dsMain.suppliercode",
-                        label: "客户编号",
-                        ...qs,
-                        ...events,
-                      },
-                      {
-                        view: "search",
-                        ctlName: "suppliername",
-                        entityName: "dsMain.suppliername",
-                        label: "客户名称",
-                        ...qs,
-                        ...events,
-                      },
-                    ],
+                    view: "search",
+                    ctlName: "suppliercode",
+                    entityName: "dsMain.suppliercode",
+                    label: "客户编号",
+                    ...qs,
+                    ...events,
                   },
                   {
-                    cols: [
-                      {
-                        label: "联系人",
-                        ctlName: "suppliercontact",
-                        entityName: "dsMain.suppliercontact",
-                        view: "text",
-                      },
-                      {
-                        label: "电话",
-                        ctlName: "suppliertel",
-                        entityName: "dsMain.suppliertel",
-                        view: "text",
-                      },
-                      {
-                        label: "地址",
-                        ctlName: "supplieraddress",
-                        entityName: "dsMain.supplieraddress",
-                        view: "text",
-                      },
-                    ],
-                  },
-                  {
-                    cols: [
-                      {
-                        label: "省",
-                        view: "text",
-                        ctlName: "supplierprovince",
-                        entityName: "dsMain.supplierprovince",
-                        disabled: true,
-                      },
-                      {
-                        label: "市",
-                        view: "text",
-                        ctlName: "suppliercity",
-                        entityName: "dsMain.suppliercity",
-                        disabled: true,
-                      },
-                      {
-                        label: "邮编",
-                        ctlName: "supplierzip",
-                        entityName: "dsMain.supplierzip",
-                        view: "text",
-                        disabled: true,
-                      },
-                    ],
-                  },
-                  {
-                    cols: [
-                      {
-                        label: "备注",
-                        ctlName: "supplierremark",
-                        entityName: "dsMain.supplierremark",
-                        view: "text",
-                      },
-                    ],
+                    view: "search",
+                    ctlName: "suppliername",
+                    entityName: "dsMain.suppliername",
+                    label: "客户名称",
+                    ...qs,
+                    ...events,
                   },
                 ],
               },
-            },
-            {},
-          ],
+              {
+                cols: [
+                  {
+                    label: "联系人",
+                    ctlName: "suppliercontact",
+                    entityName: "dsMain.suppliercontact",
+                    view: "text",
+                  },
+                  {
+                    label: "电话",
+                    ctlName: "suppliertel",
+                    entityName: "dsMain.suppliertel",
+                    view: "text",
+                  },
+                  {
+                    label: "地址",
+                    ctlName: "supplieraddress",
+                    entityName: "dsMain.supplieraddress",
+                    view: "text",
+                  },
+                ],
+              },
+              {
+                cols: [
+                  {
+                    label: "省",
+                    view: "text",
+                    ctlName: "supplierprovince",
+                    entityName: "dsMain.supplierprovince",
+                    disabled: true,
+                  },
+                  {
+                    label: "市",
+                    view: "text",
+                    ctlName: "suppliercity",
+                    entityName: "dsMain.suppliercity",
+                    disabled: true,
+                  },
+                  {
+                    label: "邮编",
+                    ctlName: "supplierzip",
+                    entityName: "dsMain.supplierzip",
+                    view: "text",
+                    disabled: true,
+                  },
+                ],
+              },
+              {
+                cols: [
+                  {
+                    label: "备注",
+                    ctlName: "supplierremark",
+                    entityName: "dsMain.supplierremark",
+                    view: "text",
+                  },
+                ],
+              },
+              {
+                cols: [
+                  {
+                    text: "提交",
+                    view: "button",
+                    onClick: {
+                      type: "function",
+                      bind: "btnClick",
+                    },
+                  },
+                  {}
+                ]
+              },
+              { template: "" },
+            ],
+          },
         },
-        {},
+        {
+          template: "",
+        },
       ],
     };
   }
@@ -322,10 +345,24 @@ export default abstract class Module extends YvanUI.BaseModule<
     // console.log(sender.ctlName + " onKeydown", event);
   }
 
+  btnClick() {
+    console.log("提交")
+    this.validate('query').then((res) => {
+      YvanUI.msg('校验成功');
+      console.log(this.query);
+    }).catch(e => {
+      console.log('校验错误', e)
+      // _.forEach(e, (value, key) => {
+      //   YvanUI.msg(key + value);
+      //   YvanUI.msgInfo(key + value);
+      // });
+    });
+  }
+
   i: number = 1;
   property: {
     value: string;
   } = {
-    value: "当前值",
-  };
+      value: "当前值",
+    };
 }

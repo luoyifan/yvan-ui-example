@@ -1,4 +1,4 @@
-interface Refs {}
+interface Refs { }
 
 @YvanUI.BizModule()
 export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
@@ -39,7 +39,11 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
                 bind: "setValue",
               },
             },
+            {}
           ],
+        },
+        {
+          template: "",
         },
       ],
     };
@@ -49,9 +53,9 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
     f1: string;
     f2: string;
   } = {
-    f1: "",
-    f2: "",
-  };
+      f1: "",
+      f2: "",
+    };
   i: number = 1;
 
   onLoad(): void {

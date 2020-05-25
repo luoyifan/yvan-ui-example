@@ -1,8 +1,7 @@
+import ExampleData from "./ExampleGrid.data";
+
 interface Refs {
-  input1: YvanUI.CtlText;
   rows: YvanUI.CtlText;
-  cols: YvanUI.CtlText;
-  clearBtn: YvanUI.CtlButton;
 }
 
 @YvanUI.BizModule()
@@ -18,6 +17,7 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
     return {
       view: "form",
       type: "space",
+      borderless: true,
       scroll: true,
       onRender: function () {
         console.log("form");
@@ -33,26 +33,19 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
                 label: "行数",
                 labelAlign: "right",
                 ctlName: "rows",
-                value: "40",
-                width: 250,
-              },
-              {
-                view: "text",
-                label: "列数",
-                labelAlign: "right",
-                ctlName: "cols",
-                value: "5",
+                value: "50",
                 width: 250,
               },
               {
                 view: "button",
                 text: "渲染",
+                width: 50,
                 onClick: { type: "function", bind: "render" },
               },
               {
                 view: "button",
                 text: "获取空白区域",
-                onClick: { type: "function", bind: "getPlace1" },
+                onClick: { type: "function", bind: "getPlace2" },
               },
               {
                 view: "button",
@@ -65,26 +58,26 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
             ],
           },
         },
-        { template: "", placeId: "thePlace" },
+        { template: "", placeId: "thePlace2" },
       ],
     };
   }
 
   ttt = 1;
 
-  getPlace1() {
-    console.log(this.getPlace("thePlace"));
+  getPlace2() {
+    console.log(this.getPlace("thePlace2"));
   }
 
   clear() {
     const vjson: any = { rows: [] };
     // this.refs.clearBtn.hidden = true;
     console.time("thetest");
-    YvanUI.renderPlace(this, "thePlace", {
+    YvanUI.renderPlace(this, "thePlace2", {
       view: "fieldset",
       label: `性能测试${this.ttt}`,
       body: vjson,
-      placeId: "thePlace",
+      placeId: "thePlace2",
     });
     console.timeEnd("thetest");
   }
@@ -94,40 +87,57 @@ export default class Module extends YvanUI.BaseModule<Module, Refs, void> {
       YvanUI.msg("rows 必须是数字");
       return;
     }
-    if (!_.parseInt(this.refs.cols.value)) {
-      YvanUI.msg("cols 必须是数字");
-      return;
-    }
+
+    this.clear();
 
     const rows = _.toNumber(this.refs.rows.value);
-    const cols = _.toNumber(this.refs.cols.value);
     const vjson: any = { rows: [] };
     for (let i = 0; i < rows; i++) {
       const row: any = { cols: [] };
-      for (let j = 0; j < cols; j++) {
-        row.cols.push({
-          ctlName: `button${i}_${j}`,
-          view: "button",
-          text: `按钮${i * cols + j + 1}(${i},${j})第${this.ttt}次`,
-          cssType: j % 3 === 0 ? "danger" : j % 3 === 1 ? "primary" : "",
-          onClick: function () {
-            console.log(`button${i}_${j}, clicked`);
-          },
-          width: 200,
-        });
-      }
-      row.cols.push({});
+      row.cols.push(
+        {
+          view: "toolbar",
+          elements: [
+            {
+              view: "label",
+              label: "主数据管理系统",
+              width: 140,
+            },
+            // {
+            //   view: "button",
+            //   text: "默认",
+            // },
+            // {
+            //   view: "button",
+            //   text: "主要",
+            //   cssType: "primary",
+            // },
+            // {
+            //   view: "button",
+            //   text: "红色警告",
+            //   cssType: "danger",
+            // },
+            // {
+            //   view: "button",
+            //   text: "绿色成功",
+            //   cssType: "success",
+            // },
+            {},
+          ],
+        }
+      );
       vjson.rows.push(row);
+      // vjson.rows.push({ view: "resizer" });
     }
 
-    console.time("thetest");
-    YvanUI.renderPlace(this, "thePlace", {
+    console.time("thetest2");
+    YvanUI.renderPlace(this, "thePlace2", {
       view: "fieldset",
-      label: `性能测试${this.ttt}`,
+      label: `文本框性能测试${this.ttt}`,
       body: vjson,
-      placeId: "thePlace",
+      placeId: "thePlace2",
     });
-    console.timeEnd("thetest");
+    console.timeEnd("thetest2");
 
     this.ttt++;
   }
