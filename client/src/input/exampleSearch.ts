@@ -168,10 +168,9 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
                     label: "组织机构编号",
                     entityName: "query.org_id",
                     view: "text",
-                    validate: function (value) {
-                      if (!value || value.length < 3) {
-                        return '输入长度必须大于等于3'
-                      }
+                    onValidate: {
+                      type: 'function',
+                      bind: 'validate1'
                     },
                     ...events,
                   },
@@ -179,10 +178,9 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
                     label: "组织机构名称",
                     entityName: "query.org_name",
                     view: "text",
-                    validate: function (value) {
-                      if (!value || value.length < 5) {
-                        return '输入长度必须大于等于5'
-                      }
+                    onValidate: {
+                      type: 'function',
+                      bind: 'validate2'
                     },
                     ...events,
                   },
@@ -190,10 +188,9 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
                     label: "组织机构名称",
                     entityName: "qqq",
                     view: "text",
-                    validate: function (value) {
-                      if (!value || value.length < 10) {
-                        return '输入长度必须大于等于10'
-                      }
+                    onValidate: {
+                      type: 'function',
+                      bind: 'validate3'
                     },
                     required: true,
                     ...events,
@@ -319,6 +316,24 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
     };
   }
 
+  validate1(sender: any, value: string) {
+    if (!value || value.length < 3) {
+      return '输入长度必须大于等于3'
+    }
+  }
+
+  validate2(sender: any, value: string) {
+    if (!value || value.length < 5) {
+      return '输入长度必须大于等于5'
+    }
+  }
+
+  validate3(sender: any, value: string) {
+    if (!value || value.length < 10) {
+      return '输入长度必须大于等于10'
+    }
+  }
+
   onLoad(): void {
     _.set(window, "search", this.refs.seachboxOrgName);
     console.log("search has set", this.refs.seachboxOrgName);
@@ -361,7 +376,7 @@ export default abstract class Module extends YvanUI.BaseModule<Module, Refs, voi
 
   btnClick() {
     console.log("提交")
-    this.validate('qqq').then((res) => {
+    this.validate('query').then((res) => {
       YvanUI.msg('校验成功');
       console.log(this.query);
     }).catch(e => {

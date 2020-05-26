@@ -151,6 +151,12 @@ export default [
         icon: "fa fa-table",
     },
     {
+        id: '7.0',
+        parentId: '7',
+        text: "表",
+        menu_url: "./ExampleGrid2"
+    },
+    {
         id: '7.1',
         parentId: '7',
         text: "DataGrid-数据表",
